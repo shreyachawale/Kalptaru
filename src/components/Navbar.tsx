@@ -31,10 +31,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
     {
       name: 'Courses',
       subLinks: [
-        { name: 'Post Graduate Degree', href: '#pg' },
-        { name: 'Diploma Course', href: '#diploma' },
-        { name: 'Degree Courses', href: '#degree' },
-        { name: 'Certificate Courses', href: '#certificate' },
+        { name: 'Post Graduate Degree', href: '#post-graduate-degree' },
+        { name: 'Diploma Course', href: '#diploma-course' },
+        { name: 'Degree Courses', href: '#degree-courses' },
+        { name: 'Certificate Courses', href: '#certificate-courses' },
       ],
     },
     { name: 'Course Schedules', href: '#course-schedules' },
