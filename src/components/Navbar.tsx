@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { useAuth } from '../context/useAuth';
 
 interface NavbarProps {
   currentPage: string;
 }
 
 export default function Navbar({ currentPage }: NavbarProps) {
+  const { user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [educationOpen, setEducationOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [coursesOpen, setCoursesOpen] = useState(false);
   const educationRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
 
@@ -176,8 +177,18 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 borderColor: '#372D67'
               }}
             >
-              LOGIN
+              {user ? user.name.split(' ')[0].toUpperCase() : 'LOGIN'}
             </a>
+            {user?.role === 'admin' && (
+              <a href="#admin" className="text-sm font-light tracking-wide" style={{ color: '#372D67' }}>
+                ADMIN
+              </a>
+            )}
+            {user && (
+              <button className="text-sm font-light tracking-wide" onClick={logout} style={{ color: '#372D67' }} type="button">
+                LOGOUT
+              </button>
+            )}
           </div>
 
           <button
@@ -290,8 +301,31 @@ export default function Navbar({ currentPage }: NavbarProps) {
               className="block text-sm font-light tracking-wide"
               style={{ color: '#372D67' }}
             >
-              LOGIN
+              {user ? user.name : 'LOGIN'}
             </a>
+            {user?.role === 'admin' && (
+              <a
+                href="#admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-sm font-light tracking-wide"
+                style={{ color: '#372D67' }}
+              >
+                ADMIN
+              </a>
+            )}
+            {user && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  logout();
+                }}
+                className="block text-sm font-light tracking-wide"
+                style={{ color: '#372D67' }}
+                type="button"
+              >
+                LOGOUT
+              </button>
+            )}
           </div>
         </div>
       )}

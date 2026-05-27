@@ -18,17 +18,21 @@ import EnquiryForm from './pages/EnquiryForm';
 import CSR from './pages/CSR';
 import Blog from './pages/Blog';
 import Login from './pages/Login';
+import Admin from './pages/Admin';
+import Payment from './pages/Payment';
+import PaymentConfirmation from './pages/PaymentConfirmation';
 import PostGraduateDegree from './pages/PostGraduateDegree';
 import DiplomaCourse from './pages/DiplomaCourse';
 import DegreeCourses from './pages/DegreeCourses';
 import CertificateCourses from './pages/CertificateCourses';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('landing');
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.slice(1) || 'landing';
+      const hash = (window.location.hash.slice(1) || 'landing').split('?')[0];
       setCurrentPage(hash);
       window.scrollTo(0, 0);
     };
@@ -75,6 +79,12 @@ function App() {
         return <Blog />;
       case 'login':
         return <Login />;
+      case 'admin':
+        return <Admin />;
+      case 'payment':
+        return <Payment />;
+      case 'payment-confirmation':
+        return <PaymentConfirmation />;
       case 'post-graduate-degree':
         return <PostGraduateDegree />;
       case 'diploma-course':
@@ -89,11 +99,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar currentPage={currentPage} />
-      <main>{renderPage()}</main>
-      <Footer />
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen bg-white">
+        <Navbar currentPage={currentPage} />
+        <main>{renderPage()}</main>
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 

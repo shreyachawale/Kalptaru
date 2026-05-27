@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import CoursePurchaseButton from '../components/CoursePurchaseButton';
 
 interface Module {
   title: string;
@@ -55,6 +56,8 @@ const PostGraduateDegree: React.FC = () => {
               <span className="text-[#4A6FA5]">3 Yrs (Mon - Thu) 10am - 4:30pm</span>
             </p>
           </div>
+
+          <CoursePurchaseButton courseId="post-graduate-jewellery-management" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

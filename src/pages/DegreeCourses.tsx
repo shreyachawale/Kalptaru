@@ -1,17 +1,19 @@
 import { ArrowRight } from 'lucide-react';
+import CoursePurchaseButton from '../components/CoursePurchaseButton';
 
 interface Course {
   title: string;
+  courseId: string;
 }
 
 const DegreeCourses: React.FC = () => {
   const courses: Course[] = [
-    { title: 'Gemology' },
-    { title: 'Manual Jewellery Design' },
-    { title: 'Computer Jewellery Designing with CAD Designing to CAM Development' },
-    { title: 'Accounting Operations (Manufacturing to Retail)' },
-    { title: 'Manufacturing Management' },
-    { title: 'Marketing Operations' },
+    { title: 'Gemology', courseId: 'degree-gemology' },
+    { title: 'Manual Jewellery Design', courseId: 'degree-manual-jewellery-design' },
+    { title: 'Computer Jewellery Designing with CAD Designing to CAM Development', courseId: 'degree-cad-cam-designing' },
+    { title: 'Accounting Operations (Manufacturing to Retail)', courseId: 'degree-accounting-operations' },
+    { title: 'Manufacturing Management', courseId: 'degree-manufacturing-management' },
+    { title: 'Marketing Operations', courseId: 'degree-marketing-operations' },
   ];
 
   return (
@@ -55,6 +57,7 @@ const DegreeCourses: React.FC = () => {
                 <span className="text-sm sm:text-base font-medium">Learn More</span>
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </div>
+              <CoursePurchaseButton courseId={course.courseId} />
             </div>
           ))}
         </div>

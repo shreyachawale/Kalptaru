@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import CoursePurchaseButton from '../components/CoursePurchaseButton';
 
 const DiplomaCourse: React.FC = () => {
   const courseModules: string[] = [
@@ -41,6 +42,8 @@ const DiplomaCourse: React.FC = () => {
               </p>
             </div>
           </div>
+
+          <CoursePurchaseButton courseId="diploma-jewellery-manufacturing" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto mb-16 md:mb-20">
